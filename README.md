@@ -1,4 +1,4 @@
-Rails Starter App
+EARTHPACT based on rails-starter-app
 ===========
 
 This is a starter web application based on the following technology stack:

@@ -35,6 +35,9 @@ gem 'jquery-rails'
 gem 'nokogiri'
 # gem 'resque', require: 'resque/server' # Resque web interface
 
+# env vars
+gem 'figaro'
+
 # Assets
 gem 'coffee-rails', '~> 4.0.0'
 # gem 'haml_assets'

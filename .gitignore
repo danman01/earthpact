@@ -67,3 +67,6 @@ brakeman.html
 
 # Ignore sensitive data
 /config/settings/local.rb
+
+# Ignore application configuration
+/config/application.yml

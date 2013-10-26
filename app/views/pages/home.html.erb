@@ -1,4 +1,80 @@
-<%= title t('hello') %>
-<h1><i class="icon-ticket">Ticket to Ride</i></h1>
-<p class="lead muted">Ruby 2.0 + Rails 4.0.0 + Bootstrap 2.3.2 + Font Awesome 3.2.1 + OmniAuth (Twitter/GitHub)</p>
+<%= title t('Earth Pact') %>
+
+  <div class="contents">
+    
+    <div class="section1">
+      <h1 class="italic">"We Do Not Inherit the Earth from Our Ancestors; We Borrow It from Our Children"<br /> - Native American Proverb</h1>
+      <div>
+        <div class="line1">
+          It's time we stop relying on politicians and corporations to reverse the current epidemic-level environmental conditions
+        </div>
+        <div class="line2">
+          Earth Pact empowers YOU to take action and save the Earth by helping track your one-time plastic usage.
+        </div>
+        <div class="line3">
+          Step up and take accountability for what you purchase and consume and ask others to do the same  
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="section2">
+      <div class="row">
+        <p class="span3">
+          <%= link_to "Make Your Earth Pact", "#make-earth-pact"%> by commiting to reduce your plastic usage. <br /> Make a $20 deposit that incentivizes you to use less plastic.
+        </p>
+        <p class="span3">
+          Respond to the daily email about how much one-time use plastic you purchased throughout the day. <br /> We track this so you can improve over time.  
+        </p>
+        <p class="span3">
+          For each piece of one-time use plastic that you purchase, we deduct $.50 from your remaining balance. <br /> This money goes towards organizations helping to fight for the environmetn every day, like the 5 Gyres institute.
+        </p>
+      
+      </div> <!-- / row -->
+      <div id="make-earth-pact">
+        <h1>Make Your Earth Pact Now</h1>
+        <% if logged_in? %>
+          <%if current_user.pact%>
+            <%# display existing pact stats %>
+            <h3>You have made your Earth Pact!</h3>
+            <div>
+              <span>You have <%= number_to_currency(current_user.pact.balance) %> left</span><br />
+              <span>Created on <%= current_user.pact.created_at %></span>
+            </div>
+          <% else %>
+          <%# make a new pact for logged in user%>
+            <%= form_for @pact do |f| %>
+              <%= f.label :agree, "Will you make the pact to reduce single use plastics and track your usage over time?" %>
+              <%= f.check_box :agreed%>
+              <%= f.hidden_field :user_id, :value=> current_user.id %>
+              <%= f.submit "Make your Earth Pact!"%>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%# user not logged in - give them options %>
+          <div class="text-center">
+            <a href="/auth/twitter" class="btn btn-primary"><i class="icon-twitter"></i> <span><%= t('auth.twitter_html') %></span></a>
+            <a href="/auth/github" class="btn"><i class="icon-github-alt"></i> <span><%= t('auth.github_html') %></span></a>
+            <% unless Rails.env.production? %><a href="/auth/developer" class="btn"><i class="icon-github-alt"></i> <span><%= t('auth.developer_html') %></span></a><% end %>
+          </div>
+        <% end %>
+
+        
+      </div>
+    </div> <!-- section 2 -->
+      <div class="section3">
+      <hr />
+      <h2>Why start with one-time use plastics?</h2>
+     <div class="line1">
+       Worldwde, 500 billion to 1 trillion plastic bags are consumed each year.  A plastic bag takes up to 1000 years to decompose, and when it finally does, the results are toxic.  Simply put, plastic is made to last forever and designed to be thrown away.
+     </div>
+     <div class="line2">
+       We live in a throwaway society where the effects of our consumption are not realized.  Tying consumption directly with a fine forces us to realize what we are consuming and tossing away.
+     </div>
+     <div class="line3">
+       Our environment is reaching a critical mass of polution.  There is a swirling mass of plastic in the pacific ocean twice the size of Texas.  Over 44% of all seabirds have ingested pieces of plastic.  1000 sea creatures die each day due to plastic pollution.
+     </div>
+   </div> <!-- section 3 -->
+ </div> <!-- content -->
+ 
 

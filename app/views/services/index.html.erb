@@ -1,8 +1,13 @@
-<div class="row">
+<div class="contents row">
   <div class="offset1 span10">
     <% @providers.each do |provider| %>
       <div class="span2">
-        <h3><%= provider.capitalize %></h3>
+        <% if current_service && current_service.provider == provider %>
+        
+          <span>Currently using <%=provider.capitalize%></span>
+          <% else %>
+            <a href="/auth/<%=provider%>" class="btn"><i class="icon-<%=provider%>-alt"></i> <span><%= t("auth.github.html") %></span></a>
+         <% end %>
       </div>
     <% end %>
   </div>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Agreed:</strong>
+  <%= @pact.agreed %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @pact.balance %>
+</p>
+
+<p>
+  <strong>Penalty:</strong>
+  <%= @pact.penalty %>
+</p>
+
+<%= link_to 'Edit', edit_pact_path(@pact) %> |
+<%= link_to 'Back', pacts_path %>

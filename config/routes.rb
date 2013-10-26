@@ -1,4 +1,12 @@
-Starterapp::Application.routes.draw do
+Earthpact::Application.routes.draw do
+  resources :contributions
+
+  resources :weeks
+
+  resources :logs
+
+  resources :pacts
+
   match '/auth/:service/callback' => 'services#create', via: %i(get post)
   match '/auth/failure' => 'services#failure', via: %i(get post)
   match '/logout' => 'sessions#destroy', via: %i(get delete), as: :logout

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Charity split:</strong>
+  <%= @contribution.charity_split %>
+</p>
+
+<p>
+  <strong>Earthpact split:</strong>
+  <%= @contribution.earthpact_split %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @contribution.amount %>
+</p>
+
+<p>
+  <strong>Last four:</strong>
+  <%= @contribution.last_four %>
+</p>
+
+<p>
+  <strong>Payment provider:</strong>
+  <%= @contribution.payment_provider %>
+</p>
+
+<%= link_to 'Edit', edit_contribution_path(@contribution) %> |
+<%= link_to 'Back', contributions_path %>

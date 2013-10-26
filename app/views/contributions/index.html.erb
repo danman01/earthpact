@@ -1,0 +1,35 @@
+<h1>Listing contributions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Charity split</th>
+      <th>Earthpact split</th>
+      <th>Amount</th>
+      <th>Last four</th>
+      <th>Payment provider</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contributions.each do |contribution| %>
+      <tr>
+        <td><%= contribution.charity_split %></td>
+        <td><%= contribution.earthpact_split %></td>
+        <td><%= contribution.amount %></td>
+        <td><%= contribution.last_four %></td>
+        <td><%= contribution.payment_provider %></td>
+        <td><%= link_to 'Show', contribution %></td>
+        <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
+        <td><%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contribution', new_contribution_path %>

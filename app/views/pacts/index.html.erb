@@ -1,0 +1,31 @@
+<h1>Listing pacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Agreed</th>
+      <th>Balance</th>
+      <th>Penalty</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pacts.each do |pact| %>
+      <tr>
+        <td><%= pact.agreed %></td>
+        <td><%= pact.balance %></td>
+        <td><%= pact.penalty %></td>
+        <td><%= link_to 'Show', pact %></td>
+        <td><%= link_to 'Edit', edit_pact_path(pact) %></td>
+        <td><%= link_to 'Destroy', pact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pact', new_pact_path %>

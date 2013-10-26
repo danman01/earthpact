@@ -1,0 +1,37 @@
+<%= form_for(@contribution) do |f| %>
+  <% if @contribution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+
+      <ul>
+      <% @contribution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :charity_split %><br>
+    <%= f.text_field :charity_split %>
+  </div>
+  <div class="field">
+    <%= f.label :earthpact_split %><br>
+    <%= f.text_field :earthpact_split %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :last_four %><br>
+    <%= f.number_field :last_four %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_provider %><br>
+    <%= f.text_field :payment_provider %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

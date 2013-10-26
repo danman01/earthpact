@@ -4,6 +4,9 @@ class CreateServices < ActiveRecord::Migration
       t.references :user, index: true
       t.string :provider
       t.string :uid
+      t.string :nickname
+      t.string :access_token
+      t.datetime :token_expires_at
 
       t.timestamps
     end

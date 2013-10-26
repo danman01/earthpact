@@ -2,7 +2,7 @@
 
   <div class="contents">
     
-    <div class="section1">
+    <div class="section1 slide-section">
       <h1 class="italic">"We Do Not Inherit the Earth from Our Ancestors; We Borrow It from Our Children"<br /> - Native American Proverb</h1>
       <div>
         <div class="line1">
@@ -18,21 +18,35 @@
       </div>
     </div>
     
-    <div class="section2">
+    <div class="section2 slide-section">
       <div class="row">
-        <p class="span3">
+       
+        <p class="span1">1.</p>
+        <p class="span8 box">
           <%= link_to "Make Your Earth Pact", "#make-earth-pact"%> by commiting to reduce your plastic usage. <br /> Make a $20 deposit that incentivizes you to use less plastic.
-        </p>
-        <p class="span3">
+
+        </p>        
+      </div> <!-- / row -->
+
+
+      <div class="row">
+        <p class="span1">2.</p>
+        <p class="span8 box">
           Respond to the daily email about how much one-time use plastic you purchased throughout the day. <br /> We track this so you can improve over time.  
         </p>
-        <p class="span3">
+      </div> <!-- / row -->
+      <div class="row">
+        
+        <p class="span1">3.</p>
+        <p class="span8 box">
           For each piece of one-time use plastic that you purchase, we deduct $.50 from your remaining balance. <br /> This money goes towards organizations helping to fight for the environmetn every day, like the 5 Gyres institute.
         </p>
-      
       </div> <!-- / row -->
       <div id="make-earth-pact">
+        <br />
+        <br />
         <h1>Make Your Earth Pact Now</h1>
+        <p class="italic">Help all inhabitants of the Earth, both present and future. Inspire Others. Support great causes.</p>
         <% if logged_in? %>
           <%if current_user.pact%>
             <%# display existing pact stats %>
@@ -62,7 +76,7 @@
         
       </div>
     </div> <!-- section 2 -->
-      <div class="section3">
+      <div class="section3 slide-section">
       <hr />
       <h2>Why start with one-time use plastics?</h2>
      <div class="line1">

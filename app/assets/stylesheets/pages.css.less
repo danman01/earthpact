@@ -9,7 +9,7 @@
 */
 p
 {
-  font-size:24px;
+  font-size:22px;
   line-height:28px;
 }
 
@@ -19,10 +19,29 @@ p
 *  Classes
 *
 */
-
+.box
+{
+border: 3px solid #ccc;
+border-radius: 5px;
+background-color:#555;
+padding:20px; 
+height: 150px;
+}
 .center
 {text-align:center;margin:0 auto;}
+.container
+{width:1100px;}
 .italic{font-style:italic;}
+.slide-section
+{ 
+  width: 100%;
+  min-height: 100%;
+  .section1{background-color:blue;}
+}
+#splash > .contents > .slide-section.section1
+{
+background-color:blue;
+}
 #splash
 {
   top: 0%;
@@ -42,7 +61,7 @@ p
 #splash .contents
 {
   top: 50%;
-  width: 1000px;
+  width: 85%;
   margin-top: 170px;
   margin-left: 120px;
   margin-bottom:170px;

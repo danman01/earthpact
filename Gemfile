@@ -10,6 +10,7 @@ gem 'unicorn'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
+gem 'omniauth-yammer'
 
 # Multi-environment configuration
 # gem 'simpleconfig'
@@ -45,6 +46,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'coffee-rails', '~> 4.0.0'
 # gem 'haml_assets'
 gem "mandrill-api"
+gem "whenever"
 
 # gem 'handlebars_assets'
 gem 'i18n-js'

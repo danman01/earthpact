@@ -25,6 +25,9 @@
 
 <!-- Placed at the top of the document 'cause of turbolinks -->
 <%= javascript_include_tag 'application' %>
+<script type="text/javascript" data-app-id=<%=ENV["YAMMER_KEY"]%> src="https://assets.yammer.com/platform/yam.js"></script>
+  
+</script>
 </head>
 <body class="<%=params[:controller]%> <%=params[:action]%>">
   <div id="splash">

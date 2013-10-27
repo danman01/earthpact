@@ -33,4 +33,10 @@ class User < ActiveRecord::Base
     total
   end
 
+  def self.who_made_pact
+    users = []
+    Pact.all.collect {|pact| users << pact.user}
+    return users
+  end
+
 end

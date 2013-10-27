@@ -27,6 +27,7 @@ en:
   auth:
     twitter_html: "Login with <strong>Twitter</strong>"
     github_html: "Login with <strong>GitHub</strong>"
+    yammer_html: "Login with <strong>Yammer</strong>"
     developer_html: "Login as developer"
     logout: "Logout"
   notifications:

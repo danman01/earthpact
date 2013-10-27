@@ -16,13 +16,14 @@
     <div class="section1 slide-section">
       <div>
         <div class="longbox">
-          <%= link_to "Join", "#make-earth-pact"%> the <%=User.all.size%> people who have made their Earth Pact and are reducing their plastic usage!
-          <%Service.all.each do |service|%>
+          <%= link_to "Join", "#make-earth-pact"%> the <%=pluralize(@pacters.size,"person")%> who made their Earth Pact!
+          <br />
+          <%@pacters.each do |user|%>
             <div class="small-box">
-              <%if service.image%>
-                <%= image_tag(service.image) %>
+              <%if user.profile_image%>
+                <%= image_tag(user.profile_image) %>
               <%else%>
-                <%=service.nickname%>
+                <%=user.services.last.nickname rescue "This dude"%>
               <% end %>
 
             </div>
@@ -54,7 +55,7 @@
         <p class="span1">1.</p>
         <div class="span8 longbox">
           <p class="span2 center">
-            <%=image_tag("/assets/build-icons/_0037_Notepad.png")%>
+            <%=image_tag("build-icons/_0037_Notepad.png")%>
             <br />
             <%= link_to "Make Your Earth Pact!", "#make-earth-pact"%> 
           </p>       
@@ -74,7 +75,7 @@
 
         <div class="span8 longbox">
           <p class="span2 center">
-            <%= image_tag("/assets/build-icons/_0036_Mail.png") %><br />
+            <%= image_tag("build-icons/_0036_Mail.png") %><br />
             Track your Plastic Usage
           </p>
 
@@ -89,7 +90,7 @@
         <p class="span1">3.</p>
         <div class="span8 longbox">
           <p class="span2 center">
-            <%= image_tag("/assets/build-icons/_0004_Globe.png") %><br />
+            <%= image_tag("build-icons/_0004_Globe.png") %><br />
             Be a part of creating a healthier Earth
           </p>
           <p class="span5">

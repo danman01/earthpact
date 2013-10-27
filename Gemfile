@@ -44,6 +44,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 # Assets
 gem 'coffee-rails', '~> 4.0.0'
 # gem 'haml_assets'
+gem "mandrill-api"
 
 # gem 'handlebars_assets'
 gem 'i18n-js'

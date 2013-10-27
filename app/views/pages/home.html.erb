@@ -1,4 +1,3 @@
-<%= title t('Earth Pact') %>
   
   
   <div class="contents">
@@ -16,6 +15,21 @@
     <br />
     <div class="section1 slide-section">
       <div>
+        <div class="longbox">
+          <%= link_to "Join", "#make-earth-pact"%> the <%=User.all.size%> people who have made their Earth Pact and are reducing their plastic usage!
+          <%Service.all.each do |service|%>
+            <div class="small-box">
+              <%if service.image%>
+                <%= image_tag(service.image) %>
+              <%else%>
+                <%=service.nickname%>
+              <% end %>
+
+            </div>
+          <% end %>
+          </div>
+         <br />
+          <br />
         <div>
           Single-use plastics, like bags, bottles and straws, are wreaking havoc on our environment and its inhabitants.  If you have ever thought about how to solve this problem, you know it's a massive undertaking with no simple solution.  However, the easiest and possibly most important thing we can do is reduce how much we consume. <br /><br /> Less Demand = Less Production = Less Waste
           

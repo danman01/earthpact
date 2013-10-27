@@ -19,6 +19,8 @@ class ServicesController < ApplicationController
           current_user.services.create!(build_twitter_hash(omnihash))
         when "github"
           current_user.services.create!(build_github_hash(omnihash))
+        when "yammer"
+          current_user.services.create!(build_yammer_hash(omnihash))
         end
 
         flash[:notice] = I18n.t('notifications.provider_added', provider: omnihash[:provider])
@@ -33,7 +35,7 @@ class ServicesController < ApplicationController
         session[:oauth_token_secret] = omnihash[:credentials][:secret]
       else
         user         = User.new
-        user.name    = omnihash[:info][:nickname]
+        user.name    = omnihash[:info][:nickname] rescue nil
         user.name    = omnihash[:info][:name] if omnihash[:provider].to_s == "developer"
         user.email   = omnihash[:info][:email]
         case omnihash[:provider] 
@@ -41,7 +43,10 @@ class ServicesController < ApplicationController
           user_service = user.services.build(build_twitter_hash(omnihash))
         when "github"
           user_service = user.services.build(build_github_hash(omnihash))
+        when "yammer"
+          user_service = user.services.build(build_yammer_hash(omnihash))
         end
+
 
         if user.save!
           # log user in
@@ -84,6 +89,13 @@ class ServicesController < ApplicationController
   end
 
   def build_github_hash(omnihash)
+    {
+      provider: omnihash[:provider],
+      uid: omnihash[:uid]
+    }
+  end
+
+  def build_yammer_hash(omnihash)
     {
       provider: omnihash[:provider],
       uid: omnihash[:uid]

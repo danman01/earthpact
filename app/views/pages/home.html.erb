@@ -20,9 +20,9 @@
           <br />
           <%@pacters.each do |user|%>
             <div class="small-box">
-              <%if user.profile_image%>
+              <%if user && user.profile_image%>
                 <%= image_tag(user.profile_image) %>
-              <%else%>
+              <%elsif user%>
                 <%=user.services.last.nickname rescue "This dude"%>
               <% end %>
 

@@ -7,7 +7,7 @@ class ServicesController < ApplicationController
   end
 
   def create
-    current_service = Service.where(provider: omnihash[:provider], uid: omnihash[:uid]).first
+    current_service = Service.where(provider: omnihash[:provider], uid: omnihash[:uid]).first rescue nil
     puts "\n ========================= \n Omnihash: \n #{omnihash.to_yaml}\n =========================== \n"
     if logged_in?
       # logged in and either adding a new or linking new service
@@ -82,7 +82,7 @@ class ServicesController < ApplicationController
     {
       provider: omnihash[:provider],
       uid: omnihash[:uid],
-      nickname: omnihash[:info][:nickname],
+      #nickname: omnihash[:info][:nickname],
       access_token: omnihash[:credentials][:token],
       image: omnihash[:info][:image]
     }

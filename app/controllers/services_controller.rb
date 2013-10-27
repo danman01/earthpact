@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
   def index
     @providers     ||= omniauth_providers
     @user_services   = current_user.services
+    @pact = Pact.new
   end
 
   def create
@@ -54,7 +55,7 @@ class ServicesController < ApplicationController
       end
     end
 
-    redirect_to services_path
+    redirect_to root_url 
   end
 
   def destroy

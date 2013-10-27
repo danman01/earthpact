@@ -1,29 +1,23 @@
-<p id="notice"><%= notice %></p>
-
+<h2>You Rock! You are well on your way to changing your ways and helping the Earth!</h2>
 <p>
-  <strong>Charity split:</strong>
-  <%= @contribution.charity_split %>
-</p>
-
-<p>
-  <strong>Earthpact split:</strong>
-  <%= @contribution.earthpact_split %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @contribution.amount %>
-</p>
-
-<p>
-  <strong>Last four:</strong>
-  <%= @contribution.last_four %>
+  <strong>You just contributed </strong>
+  <%= number_to_currency(@contribution.amount) %>
+  to your EarthPact balance.  Your balance is now at <%=number_to_currency(current_user.pact.balance)%>
 </p>
 
 <p>
   <strong>Payment provider:</strong>
   <%= @contribution.payment_provider %>
-</p>
+  </p>
+  <%if current_user.logs.empty?%>
+    <h3>Here's your first plastic log entry.  
+  <%else%>
+    <h3> Here's where you record your plastic usage.  
+  <% end %>
+    In the future, we will ask you these same questions via email.
+    Be honest with your answer so you can accurately track and improve over time.</h3>
+  <br />
+   <%=render partial: "logs/form"  %>
+  <br />
 
-<%= link_to 'Edit', edit_contribution_path(@contribution) %> |
-<%= link_to 'Back', contributions_path %>
+<%= link_to 'Home', root_url %>

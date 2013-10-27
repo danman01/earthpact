@@ -8,6 +8,7 @@ class LogsController < ApplicationController
 
   # GET /logs/1
   def show
+    @total_plastic_used = @log.user.total_plastic_used
   end
 
   # GET /logs/new
@@ -20,10 +21,21 @@ class LogsController < ApplicationController
   end
 
   # POST /logs
+  # Create log entry and add totals to week (overall for app)
   def create
     @log = Log.new(log_params)
-
+    @log.user_id = current_user.id
+    # contribute to week (entire app)
+    week = Week.current_week
+    @log.week_id = week.id
     if @log.save
+      # update week values from log entry
+      week.update_with_log(@log)
+      
+      # deduct penalties from users' balance
+      pact = current_user.pact
+      pact.balance -= @log.amount_used * pact.penalty # something like $20 - 5*.25
+      pact.save
       redirect_to @log, notice: 'Log was successfully created.'
     else
       render action: 'new'

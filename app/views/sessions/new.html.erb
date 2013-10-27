@@ -1,5 +1,4 @@
-<div class="contents">
-  <div class="center">
+<div> 
     <% if logged_in? %>
       <a href="<%= logout_path %>" class="btn"><%= t('auth.logout') %></a>
     <% else %>
@@ -9,5 +8,4 @@
         <% unless Rails.env.production? %><a href="/auth/developer" class="btn"><i class="icon-github-alt"></i> <span><%= t('auth.developer_html') %></span></a><% end %>
       </div>
     <% end %>
-  </div>
 </div>

@@ -22,7 +22,17 @@ class PactsController < ApplicationController
   # POST /pacts
   def create
     @pact = Pact.new(pact_params)
-
+    # initial pact amounts
+    @pact.penalty=0.25
+    if @pact.balance.nil?
+      # init balance
+      @pact.balance = 0
+    end
+    if params[:user_email]
+      user = current_user
+      user.email = params[:user_email]
+      user.save
+    end
     if @pact.save
       redirect_to @pact, notice: 'Pact was successfully created.'
     else
@@ -53,6 +63,6 @@ class PactsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def pact_params
-      params.require(:pact).permit(:agreed, :balance, :penalty)
+      params.require(:pact).permit(:agreed, :balance, :penalty,:user_id)
     end
 end

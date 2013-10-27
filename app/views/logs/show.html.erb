@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Amount used:</strong>
-  <%= @log.amount_used %>
+  <strong>Amount of plastic logged:</strong>
+  <%= pluralize(@log.amount_used,"piece") %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Description of items logged:</strong>
   <%= @log.description %>
 </p>
 
-<%= link_to 'Edit', edit_log_path(@log) %> |
-<%= link_to 'Back', logs_path %>
+<p>Total Plastic used:</p>
+<p><%=@total_plastic_used%></p>
+<p>Total Money Contributed:</p>
+<p><%=number_to_currency(@total_plastic_used * current_user.pact.penalty)%></p>
+<%= link_to 'Home', root_url %>

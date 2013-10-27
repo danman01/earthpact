@@ -38,6 +38,9 @@ gem 'nokogiri'
 # env vars
 gem 'figaro'
 
+# payments
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 # Assets
 gem 'coffee-rails', '~> 4.0.0'
 # gem 'haml_assets'
@@ -51,7 +54,9 @@ gem 'therubyracer'
 gem 'turbolinks'
 gem 'twitter-bootstrap-rails', github: 'diowa/twitter-bootstrap-rails', branch: 'fontawesome-3.2.1'
 gem 'uglifier', '>= 1.3.0'
-
+# graphing
+gem 'morrisjs-rails'
+gem 'raphael-rails'
 group :development, :test do
   gem 'debugger'
   gem 'delorean'

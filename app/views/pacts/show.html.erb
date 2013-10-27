@@ -1,19 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="contents">
+  
+  <p>
+    <strong>Alright, you're commited!  Never underestimate the power of one.  </strong>
+  </p>
+  <%if @pact.balance && @pact.balance > 0%>
+    <p>
+      <strong>Your Balance:</strong>
+      <%= number_to_currency(@pact.balance) %>
+      </p>
+  <%else%>
+    <p><strong>Continue to the next step, which is committing $20 to our cause!
+    <br />(<a href="javascript:$('#why-money').toggle('slow');">Why bring money into the equation?</a>)
+        
+        </p> 
+         <p id="why-money" style="display:none;clear:both;">Money caused our seperation from cause and effect, and money has the power to make us aware again of our actions. Mark Boyle, who has lived without money for some time, has some great quotes on the topic: "The degrees of separation between the consumer and the consumed have increased so much that it now means we're completely unaware of the levels of destruction and suffering embodied in the stuff we buy."  Mark also points out that money is the culprit behind much of our suffering: "Very few people actually want to cause suffering to others; most just don't have any idea that they directly are.  The tool that has enabled this separation is money." - Mark Boyle</p>
+ </strong></p>
+    <div>
+      <form action="/contributions" method="POST">
+        <script
+          src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+          data-key="<%=Contribution::STRIPE_KEY%>"
+          data-amount="2000"
+          data-name="Earth Pact"
+          data-description="$20.00 Contribution for Earth Pact"
+          data-image="/assets/globe_128.png">
+        </script>
+      </form>
+     </div>
+   <% end %>
+   <br />
+   <p>Your money remains tied to your account and will be slowly used up as you record your use of plastics.</p>
+  <p>
+  <strong>You pay 
+    <%= number_to_currency(@pact.penalty) %>  
+    each time you use a single-use plastic.  The penalities you pay goes to great organizations like the 5 Gyres Institute, so it's really a good thing!</strong>
+  </p>
+  <div>
+    <p>Current EarthPact balance: <%=number_to_currency(@pact.balance)%></p>
+    <p>Total pieces of plastic logged: <%=pluralize(current_user.total_plastic_used,"pieces")%></p>
+  </div>
 
-<p>
-  <strong>Agreed:</strong>
-  <%= @pact.agreed %>
-</p>
+  <%= link_to 'Back', root_url %>
+</div>
 
-<p>
-  <strong>Balance:</strong>
-  <%= @pact.balance %>
-</p>
-
-<p>
-  <strong>Penalty:</strong>
-  <%= @pact.penalty %>
-</p>
-
-<%= link_to 'Edit', edit_pact_path(@pact) %> |
-<%= link_to 'Back', pacts_path %>

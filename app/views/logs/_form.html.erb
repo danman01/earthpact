@@ -12,14 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :amount_used %><br>
+    <%= f.label :amount_used,"How many single-use plastics did you consume today? These are things like cups, bags, straws and styrofoam containers" %><br>
     <%= f.number_field :amount_used %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description, "Give a description of the items for your own reference" %><br>
     <%= f.text_area :description %>
+     
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Record Plastic Log", :class=>"btn" %>
   </div>
 <% end %>

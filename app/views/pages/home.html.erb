@@ -1,5 +1,10 @@
 <%= title t('Earth Pact') %>
-
+  <div class="row">
+     <div id="myfirstchart">
+       
+     </div>
+  </div>
+  
   <div class="contents">
     
     <div class="section0 slide-section">
@@ -10,20 +15,23 @@
     <br />
     <br />
     <br />
+    <br />
+    <br />
     <div class="section1 slide-section">
       <div>
         <div>
-          Single-use plastics, like bags, bottles and straws, are wreaking havoc on our environment and its inhabitants.  Have you ever thought about how to solve this problem? It's a massive endeavor with no simple solution.  However, the most important thing we can do is reduce how much we consume. <br /> Less Demand = Less Production = Less Waste
+          Single-use plastics, like bags, bottles and straws, are wreaking havoc on our environment and its inhabitants.  If you have ever thought about how to solve this problem, you know it's a massive undertaking with no simple solution.  However, the easiest and possibly most important thing we can do is reduce how much we consume. <br /><br /> Less Demand = Less Production = Less Waste
           
         </div>
+        <br />
         <div class="line1">
-          It's time we stop relying on politicians and corporations to reverse the current epidemic-level environmental conditions
+          It's time we stop relying on politicians and corporations to reverse the current epidemic-level environmental conditions.
         </div>
         <div class="line2">
-          Earth Pact empowers YOU to take action and save the Earth by helping track your one-time plastic usage.
+          Earth Pact empowers YOU to take action and save the Earth by helping track and reduce your single-use plastic consumption.
         </div>
         <div class="line3">
-          Step up and take accountability for what you purchase and consume. Ask others to do the same  
+          Step up and take accountability for what you purchase and consume. Ask others to do the same.
         </div>
 
       </div>
@@ -31,19 +39,22 @@
     
     <div class="section2 slide-section">
       <div class="row">
-        <h2>How does it work?</h2>
+        <h2 class="center">How does it work?</h2>
         <p class="span1">1.</p>
         <p class="span8 longbox">
-          <%= link_to "Make Your Earth Pact", "#make-earth-pact"%> by commiting to reduce your plastic usage. <br /> Make a $20 deposit that incentivizes you to use less plastic.
-
-        </p>        
+        <%= link_to "Make Your Earth Pact", "#make-earth-pact"%> by commiting to reduce your plastic usage. <br /> Make a $20 deposit that incentivizes you to use less plastic. 
+        (<a href="javascript:$('#why-money').toggle('slow');">Why bring money into the equation?</a>)
+        
+        </p> 
+         <p id="why-money" style="display:none;clear:both;">Money caused our seperation from cause and effect, and money has the power to make us aware again of our actions. Mark Boyle, who has lived without money for some time, has some great quotes on the topic: "The degrees of separation between the consumer and the consumed have increased so much that it now means we're completely unaware of the levels of destruction and suffering embodied in the stuff we buy."  Mark also points out that money is the culprit behind much of our suffering: "Very few people actually want to cause suffering to others; most just don't have any idea that they directly are.  The tool that has enabled this separation is money." - Mark Boyle</p>
+        
       </div> <!-- / row -->
 
 
       <div class="row">
         <p class="span1">2.</p>
         <p class="span8 longbox">
-          Respond to the daily email about how much one-time use plastic you purchased throughout the day. <br /> We track this so you can improve over time.  
+          Respond to the daily email about how much one-time use plastic you purchased throughout the day. <br /> We track this so you can improve over time.
         </p>
       </div> <!-- / row -->
       <div class="row">
@@ -53,41 +64,7 @@
           For each piece of one-time use plastic that you purchase, we deduct $.50 from your remaining balance. <br /> This money goes towards organizations helping to fight for the environmetn every day, like the 5 Gyres institute.
         </p>
       </div> <!-- / row -->
-      <div id="make-earth-pact">
-        <br />
-        <br />
-        <h1>Make Your Earth Pact Now</h1>
-        <p class="italic">Help all inhabitants of the Earth, both present and future. Inspire Others. Support great causes.</p>
-        <% if logged_in? %>
-          <%if current_user.pact%>
-            <%# display existing pact stats %>
-            <h3>You have made your Earth Pact!</h3>
-            <div>
-              <span>You have <%= number_to_currency(current_user.pact.balance) %> left</span><br />
-              <span>Created on <%= current_user.pact.created_at %></span>
-            </div>
-          <% else %>
-          <%# make a new pact for logged in user%>
-            <%= form_for @pact do |f| %>
-              <%= f.label :agree, "Will you make the pact to reduce single use plastics and track your usage over time?" %>
-              <%= f.check_box :agreed%>
-              <%= f.hidden_field :user_id, :value=> current_user.id %>
-              <%= f.submit "Make your Earth Pact!"%>
-            <% end %>
-          <% end %>
-        <% else %>
-          <%# user not logged in - give them options %>
-          <div class="text-center">
-            <a href="/auth/twitter" class="btn btn-primary"><i class="icon-twitter"></i> <span><%= t('auth.twitter_html') %></span></a>
-            <a href="/auth/github" class="btn"><i class="icon-github-alt"></i> <span><%= t('auth.github_html') %></span></a>
-            <% unless Rails.env.production? %><a href="/auth/developer" class="btn"><i class="icon-github-alt"></i> <span><%= t('auth.developer_html') %></span></a><% end %>
-          </div>
-        <% end %>
-        <div>
-          <div class="line2">
-           We live in a throwaway society where the effects of our consumption are not realized.  Tying consumption directly with a fine forces us to realize what we are consuming and tossing away.
-         </div>
-        </div>
+      <%= render 'pact_flow' %>
 
         
       </div>
@@ -96,7 +73,7 @@
       <hr />
       <h2>Why start with one-time use plastics?</h2>
      <div class="line1">
-       Worldwde, 500 billion to 1 trillion plastic bags are consumed each year.  A plastic bag takes up to 1000 years to decompose, and when it finally does, the results are toxic.  Simply put, plastic is made to last forever and designed to be thrown away.
+       Worldwide, 500 billion to 1 trillion plastic bags are consumed each year.  A plastic bag takes up to 1000 years to decompose, and when it finally does, the results are toxic.  Simply put, plastic is made to last forever and designed to be thrown away.
      </div>
      
      <div class="line2">
@@ -105,6 +82,10 @@
      <%= link_to "More on why plastic is a problem (or simply google it...but with great knowledge comes great responsibility!)","http://oceancrusaders.org/plastic-crusades/plastic-statistics/",:target=>"_blank" %>
      <br />
      <br />
+     <div class="line2">
+       We live in a throwaway society where the effects of our consumption are not realized.  Tying consumption directly with a fine forces us to realize what we are consuming and tossing away.
+     </div>
+
      <div>
        <%= link_to "Make your Earth Pact","#make-earth-pact"%> and save these sea creatures:
      </div>
@@ -129,6 +110,30 @@
      </div>
 
    </div> <!-- section 3 -->
+   <%= link_to "Have Feeback? Email Me", "mailto: myearthpledge@gmail.com" %>
  </div> <!-- content -->
  
-
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'myfirstchart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [
+    <%count = 1%>
+    <%@weeks.each do |week|%>
+      { Week: '<%=count%>', Pieces: <%=week.total_used.to_s%> },
+      <% count+=1%>
+    <% end %>
+    ],
+  // The name of the data record attribute that contains x-values.
+  xkey: 'Week',
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['Total Plastic Logged'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['Plastic Logged']
+});
+})
+</script>

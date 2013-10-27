@@ -26,11 +26,10 @@
 <!-- Placed at the top of the document 'cause of turbolinks -->
 <%= javascript_include_tag 'application' %>
 </head>
-<body>
+<body class="<%=params[:controller]%> <%=params[:action]%>">
   <div id="splash">
 
 
-    <%= render 'shared/navbar' %>
     <div class='container' id='main-container'>
       <%= yield %>
     </div>

@@ -1,14 +1,23 @@
-<div class="contents row">
-  <div class="offset1 span10">
+<div class="contents">
+  <div class="center">
     <% @providers.each do |provider| %>
-      <div class="span2">
+      <div class="">
         <% if current_service && current_service.provider == provider %>
         
-          <span>Currently using <%=provider.capitalize%></span>
+          <span style="font-size:12px;">Currently using <%=provider.capitalize%></span>
           <% else %>
-            <a href="/auth/<%=provider%>" class="btn"><i class="icon-<%=provider%>-alt"></i> <span><%= t("auth.github.html") %></span></a>
-         <% end %>
+            <a href="/auth/<%=provider%>" class="btn"><i class="icon-<%=provider%>-alt"></i> <span><%=provider%></span></a>
+        <% end %>
       </div>
     <% end %>
   </div>
+  <br />
+  <br />
+   <div class="center">
+     <%= render partial: "pages/pact_flow" %>
+     <br />
+     <br />
+    <%= link_to "Home",root_url %>
+   </div>
+
 </div>

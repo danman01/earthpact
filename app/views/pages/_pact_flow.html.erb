@@ -1,0 +1,46 @@
+<div id="make-earth-pact">
+  <br />
+  <br />
+  <h1>Make Your Earth Pact Now</h1>
+  <p class="italic">Help all inhabitants of the Earth, both present and future. Inspire Others. Support great causes.</p>
+  <% if logged_in? %>
+    <%if current_user.pact%>
+      <%# display existing pact stats %>
+      <h3>You have made your <%= link_to "Earth Pact!",current_user.pact%></h3>
+      <div>
+        <span>You have <%= number_to_currency(current_user.pact.balance) %> left</span><br />
+        <span>Created on <%= current_user.pact.created_at %></span>
+      </div>
+    <% else %>
+    <%# make a new pact for logged in user%>
+      <%= form_for @pact do |f| %>
+        <%= f.check_box :agreed%>
+        <%= f.label :agree, "Will you make the pact to reduce single use plastics?", :class=>"inline"%>
+        <span class="form-helper"> (It's ultimately up to you to reduce your plastic usage)</span><br />
+        <br />
+        <%= check_box_tag :agreed2 %>
+        <%= label_tag :agree2, "Will you track your usage over time?",:class=>"inline" %>
+        <span class="form-helper"> (We send a daily email asking how many pieces of single-use plastic you used)</span> <br />
+        <br />
+        
+        <%= check_box_tag :agree3 %>
+        <%= label_tag :agree3, "Will you commit an initial $20 to motivate you and support environmental organizations?",:class=>"inline" %>              
+        <span class="form-helper"> (This happens next)</span><br />
+        <br />
+        <% if current_user.email.blank? %>
+          <%= label_tag :user_email,"Enter your email address" %>
+          <%= email_field_tag :user_email %>
+        <%end%>
+        <%= f.hidden_field :user_id, :value=> current_user.id %><br />
+        <%= f.submit "Make your Earth Pact!", :class=>"btn btn-submit"%>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%# user not logged in - give them options %>
+    <h3>The first step is authenticating with Twitter or Github</h3>
+    <div class="text-center">
+      <a href="/auth/twitter" class="btn btn-primary"><i class="icon-twitter"></i> <span><%= t('auth.twitter_html') %></span></a>
+      <a href="/auth/github" class="btn"><i class="icon-github-alt"></i> <span><%= t('auth.github_html') %></span></a>
+      <% unless Rails.env.production? %><a href="/auth/developer" class="btn"><i class="icon-github-alt"></i> <span><%= t('auth.developer_html') %></span></a><% end %>
+    </div>
+  <% end %>

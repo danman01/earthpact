@@ -13,6 +13,7 @@
     <br />
     <br />
     <br />
+    <br />
     <div class="section1 slide-section">
       <div>
         <div>
@@ -37,11 +38,18 @@
       <div class="row">
         <h2 class="center">How does it work?</h2>
         <p class="span1">1.</p>
-        <p class="span8 longbox">
-        <%= link_to "Make Your Earth Pact", "#make-earth-pact"%> by commiting to reduce your plastic usage. <br /> Make a $20 deposit that incentivizes you to use less plastic. 
+        <div class="span8 longbox">
+          <p class="span2 center">
+            <%=image_tag("/assets/build-icons/_0037_Notepad.png")%>
+            <br />
+            <%= link_to "Make Your Earth Pact!", "#make-earth-pact"%> 
+          </p>       
+          <p class="span5">
+            Commit to reduce your plastic usage. <br /> Make a $20 deposit that incentivizes you to use less plastic. <br />
         (<a href="javascript:$('#why-money').toggle('slow');">Why bring money into the equation?</a>)
-        
-        </p> 
+
+          </p>        
+        </div> 
          <p id="why-money" style="display:none;clear:both;">Money caused our seperation from cause and effect, and money has the power to make us aware again of our actions. Mark Boyle, who has lived without money for some time, has some great quotes on the topic: "The degrees of separation between the consumer and the consumed have increased so much that it now means we're completely unaware of the levels of destruction and suffering embodied in the stuff we buy."  Mark also points out that money is the culprit behind much of our suffering: "Very few people actually want to cause suffering to others; most just don't have any idea that they directly are.  The tool that has enabled this separation is money." - Mark Boyle</p>
         
       </div> <!-- / row -->
@@ -49,18 +57,39 @@
 
       <div class="row">
         <p class="span1">2.</p>
-        <p class="span8 longbox">
-          Respond to the daily email about how much one-time use plastic you purchased throughout the day. <br /> We track this so you can improve over time.
-        </p>
+
+        <div class="span8 longbox">
+          <p class="span2 center">
+            <%= image_tag("/assets/build-icons/_0036_Mail.png") %><br />
+            Track your Plastic Usage
+          </p>
+
+          <p class="span5">
+            Respond to the daily email about how much one-time use plastic you purchased throughout the day. <br /> We track this so you can improve over time.
+          
+          </p>
+        </div> <!-- longbox -->
       </div> <!-- / row -->
       <div class="row">
         
         <p class="span1">3.</p>
-        <p class="span8 longbox">
-          For each piece of one-time use plastic that you purchase, we deduct $.50 from your remaining balance. <br /> This money goes towards organizations helping to fight for the environmetn every day, like the 5 Gyres institute.
-        </p>
+        <div class="span8 longbox">
+          <p class="span2 center">
+            <%= image_tag("/assets/build-icons/_0004_Globe.png") %><br />
+            Be a part of creating a healthier Earth
+          </p>
+          <p class="span5">
+            For each piece of one-time use plastic that you purchase, we deduct $.25 from your remaining balance. <br /> This money goes towards organizations helping to fight for the environment every day, like the 5 Gyres institute.
+            
+          </p>
+        </div>
       </div> <!-- / row -->
-      <%= render 'pact_flow' %>
+      <br />
+      <br />
+      <div class="center">
+        <%= render 'pact_flow' %>
+        
+      </div>
 
         
       </div>
@@ -81,8 +110,8 @@
      <div class="line2">
        We live in a throwaway society where the effects of our consumption are not realized.  Tying consumption directly with a fine forces us to realize what we are consuming and tossing away.
      </div>
-
-     <div>
+      <br />
+     <div class="center">
        <%= link_to "Make your Earth Pact","#make-earth-pact"%> and save these sea creatures:
      </div>
      <div class="row">
@@ -125,7 +154,7 @@ $(function(){
   data: [
     <%count = 1%>
     <%@weeks.each do |week|%>
-      { Week: '<%=count%>', Pieces: <%=week.total_used.to_s%> },
+      { Week: '<%=count%>', Pieces: "<%=week.total_used.to_s%>" },
       <% count+=1%>
     <% end %>
     ],

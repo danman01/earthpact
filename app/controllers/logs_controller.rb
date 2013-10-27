@@ -3,7 +3,11 @@ class LogsController < ApplicationController
 
   # GET /logs
   def index
-    @logs = Log.all
+    if current_user
+      @logs = current_user.logs
+    else
+      @logs.all
+    end
   end
 
   # GET /logs/1

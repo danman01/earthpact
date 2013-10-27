@@ -8,11 +8,12 @@
       <%# display existing pact stats %>
       <h3>You have made your <%= link_to "Earth Pact!",current_user.pact%></h3>
       <div>
-        <span>You have <%= number_to_currency(current_user.pact.balance) %> left</span><br />
-        <span>Created on <%= current_user.pact.created_at %></span>
+        <span style="font-size:18px;">You have <%= number_to_currency(current_user.pact.balance) %> left</span><br />
       </div>
+      <%= render "/logs/user_totals" %>
     <% else %>
-    <%# make a new pact for logged in user%>
+      <%# does not have a current pact, but is logged in %>
+      <%# make a new pact for logged in user%>
       <%= form_for @pact do |f| %>
         <%= f.check_box :agreed%>
         <%= f.label :agree, "Will you make the pact to reduce single use plastics?", :class=>"inline"%>

@@ -83,7 +83,7 @@ class ServicesController < ApplicationController
       provider: omnihash[:provider],
       uid: omnihash[:uid],
       #nickname: omnihash[:info][:nickname],
-      access_token: omnihash[:credentials][:token],
+      #access_token: omnihash[:credentials][:token],
       image: omnihash[:info][:image]
     }
   end
